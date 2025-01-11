@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import VisualizationData from "../VisualizationData"
+import VisualizationData from "../VisualizationData";
 import axios from "axios";
 import { MdOutlineContentCopy } from "react-icons/md";
 import "./index.css";
@@ -15,6 +15,7 @@ function Dashboard() {
   const [tempSearchTerm, setTempSearchTerm] = useState("");
   const [tempStartDate, setTempStartDate] = useState("");
   const [tempEndDate, setTempEndDate] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const itemsPerPage = 10;
 
@@ -26,12 +27,17 @@ function Dashboard() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get("https://edviron-api-sepia.vercel.app/transactions");
+      setIsLoading(true);
+      const response = await axios.get(
+        "https://edviron-api-sepia.vercel.app/transactions"
+      );
       console.log(response, "frontend");
       setTransactions(response.data);
       setFilteredTransactions(response.data);
     } catch (error) {
       console.error("Error fetching transactions:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -143,7 +149,11 @@ function Dashboard() {
           </buttion>
         </div>
       </div>
-
+      {isLoading && (
+        <div className="Loading-dashboard">
+          <p> Transactions Loading...</p>
+        </div>
+      )}
       <div className="table-container">
         <table className="transactions-table">
           <thead>
@@ -204,7 +214,7 @@ function Dashboard() {
           Next
         </button>
       </div>
-      <VisualizationData data={transactions}/>
+      <VisualizationData data={transactions} />
     </div>
   );
 }
