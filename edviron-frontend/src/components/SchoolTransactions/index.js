@@ -13,7 +13,7 @@ function SchoolTransactions() {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/transactions/school/${schoolId}`
+        `https://edviron-api-sepia.vercel.app/transactions/school/${schoolId}`
       );
       setTransactions(response.data);
       //console.log(response.data)
@@ -35,7 +35,13 @@ function SchoolTransactions() {
           value={schoolId}
           onChange={(e) => setSchoolId(e.target.value)}
         />
-        <button type="button" onClick={fetchSchoolTransactions} className="search-button">Search</button>
+        <button
+          type="button"
+          onClick={fetchSchoolTransactions}
+          className="search-button"
+        >
+          Search
+        </button>
       </div>
 
       {loading ? (

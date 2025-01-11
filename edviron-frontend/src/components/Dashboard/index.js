@@ -26,7 +26,7 @@ function Dashboard() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/transactions");
+      const response = await axios.get("https://edviron-api-sepia.vercel.app/transactions");
       console.log(response, "frontend");
       setTransactions(response.data);
       setFilteredTransactions(response.data);

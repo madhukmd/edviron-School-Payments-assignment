@@ -15,7 +15,7 @@ function StatusCheck() {
     setError("");
     try {
       const response = await axios.get(
-        `http://localhost:5000/check-status/${orderId}`
+        `https://edviron-api-sepia.vercel.app/check-status/${orderId}`
       );
       setStatus(response.data);
     } catch (error) {

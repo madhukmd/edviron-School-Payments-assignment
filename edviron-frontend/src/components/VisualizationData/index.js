@@ -22,7 +22,9 @@ function VisualizationData({ data }) {
     return (
       <div className="error-chart">
         <h1>Visual Dashboard</h1>
-        <p className="error-heading">Something went wrong while getting Charts...</p>
+        <p className="error-heading">
+          Something went wrong while getting Charts...
+        </p>
       </div>
     );
   }
