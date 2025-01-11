@@ -211,5 +211,12 @@
 .loading-text {
   font-family: Inter, sans-serif;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .loading-text {
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+  }
 }
