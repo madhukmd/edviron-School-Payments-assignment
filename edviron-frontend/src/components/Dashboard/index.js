@@ -151,7 +151,7 @@ function Dashboard() {
       </div>
       {isLoading && (
         <div className="Loading-dashboard">
-          <p> Transactions Loading...</p>
+          <p className="loading-text"> Transactions Loading...</p>
         </div>
       )}
       <div className="table-container">
