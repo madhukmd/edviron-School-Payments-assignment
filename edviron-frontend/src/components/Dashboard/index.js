@@ -149,72 +149,79 @@ function Dashboard() {
           </buttion>
         </div>
       </div>
-      {isLoading && (
+      {isLoading ? (
         <div className="Loading-dashboard">
           <p className="loading-text"> Transactions Loading...</p>
         </div>
-      )}
-      <div className="table-container">
-        <table className="transactions-table">
-          <thead>
-            <tr>
-              <th>Collect ID</th>
-              <th>School ID</th>
-              <th>Gateway</th>
-              <th>Order Amount</th>
-              <th>Transaction Amount</th>
-              <th>Status</th>
-              <th>Custom Order ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedTransactions.map((transaction) => (
-              <tr className="table-row" key={transaction.collect_id}>
-                <td>{transaction.collect_id}</td>
-                <td className="copy-column">
-                  {transaction.school_id}
-                  <button
-                    type="button"
-                    className="copy-button"
-                    onClick={() => handleCopySchoolId(transaction.school_id)}
-                    title="Copy School ID"
-                  >
-                    <MdOutlineContentCopy />
-                  </button>
-                </td>
-                <td>{transaction.gateway}</td>
-                <td>₹{transaction.order_amount}</td>
-                <td>₹{transaction.transaction_amount}</td>
-                <td>
-                  <span
-                    className={`status-badge ${transaction.status.toLowerCase()}`}
-                  >
-                    {transaction.status.toLowerCase()}
-                  </span>
-                </td>
-                <td>{transaction.custom_order_id}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      ) : (
+        <>
+          <div className="table-container">
+            <table className="transactions-table">
+              <thead>
+                <tr>
+                  <th>Collect ID</th>
+                  <th>School ID</th>
+                  <th>Gateway</th>
+                  <th>Order Amount</th>
+                  <th>Transaction Amount</th>
+                  <th>Status</th>
+                  <th>Custom Order ID</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginatedTransactions.map((transaction) => (
+                  <tr className="table-row" key={transaction.collect_id}>
+                    <td>{transaction.collect_id}</td>
+                    <td className="copy-column">
+                      {transaction.school_id}
+                      <button
+                        type="button"
+                        className="copy-button"
+                        onClick={() =>
+                          handleCopySchoolId(transaction.school_id)
+                        }
+                        title="Copy School ID"
+                      >
+                        <MdOutlineContentCopy />
+                      </button>
+                    </td>
+                    <td>{transaction.gateway}</td>
+                    <td>₹{transaction.order_amount}</td>
+                    <td>₹{transaction.transaction_amount}</td>
+                    <td>
+                      <span
+                        className={`status-badge ${transaction.status.toLowerCase()}`}
+                      >
+                        {transaction.status.toLowerCase()}
+                      </span>
+                    </td>
+                    <td>{transaction.custom_order_id}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <span>Page {currentPage}</span>
-        <button
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-          disabled={currentPage * itemsPerPage >= filteredTransactions.length}
-        >
-          Next
-        </button>
-      </div>
-      <VisualizationData data={transactions} />
+          <div className="pagination">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            <span>Page {currentPage}</span>
+            <button
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+              disabled={
+                currentPage * itemsPerPage >= filteredTransactions.length
+              }
+            >
+              Next
+            </button>
+          </div>
+          <VisualizationData data={transactions} />
+        </>
+      )}
     </div>
   );
 }

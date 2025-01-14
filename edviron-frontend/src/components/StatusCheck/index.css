@@ -1,5 +1,8 @@
+/* *{
+  border: 1px solid red;
+} */
 .status-check {
-  max-width: 600px;
+  max-width: 800px;
   margin: 70px auto;
   padding: 32px;
 }
@@ -9,6 +12,8 @@
   gap: 16px;
   margin: 32px 0;
 }
+
+
 
 .search-button {
   padding: 8px 24px;
@@ -20,6 +25,7 @@
   cursor: pointer;
 }
 
+
 .search-input-status {
   padding: 8px 16px;
   border: 1px solid var(--text-secondary);
@@ -28,8 +34,17 @@
   color: var(--text-primary);
   min-width: 300px;
   height: 100%;
-  margin-right: 5px;
+  
+  /* margin-right: 5px; */
 }
+
+@media screen and (max-width:576px) {
+  .search-input-status{
+    width: 100%;
+  }
+}
+
+
 
 .status-result {
   margin-top: 32px;

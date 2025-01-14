@@ -23,6 +23,13 @@
   border: 1px solid #eee;
 }
 
+@media screen and (max-width:576px) {
+  .chart-card{
+    margin-bottom: 20px;
+  }
+  
+}
+
 .chart-title {
   font-size: 16px;
   font-weight: 600;
