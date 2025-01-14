@@ -13,8 +13,6 @@
   margin: 32px 0;
 }
 
-
-
 .search-button {
   padding: 8px 24px;
   background-color: var(--primary-color);
@@ -25,7 +23,6 @@
   cursor: pointer;
 }
 
-
 .search-input-status {
   padding: 8px 16px;
   border: 1px solid var(--text-secondary);
@@ -34,17 +31,15 @@
   color: var(--text-primary);
   min-width: 300px;
   height: 100%;
-  
+
   /* margin-right: 5px; */
 }
 
-@media screen and (max-width:576px) {
-  .search-input-status{
+@media screen and (max-width: 576px) {
+  .search-input-status {
     width: 100%;
   }
 }
-
-
 
 .status-result {
   margin-top: 32px;
